@@ -30,6 +30,8 @@ func main() {
 		fmt.Println("Pong")
 	})
 
+	router.POST("/signup", )
+
 	 // Run the Gin server
 	 router.Run(":8080")
 }
