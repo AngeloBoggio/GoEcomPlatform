@@ -2,6 +2,7 @@ package main
 
 import (
 	"ecommerce-backend/config"
+	"ecommerce-backend/models"
 	"fmt"
 
 	"github.com/gin-gonic/gin"
@@ -26,6 +27,17 @@ func main() {
 	//Connect to the database
 	config.ConnectDatabase()
 	
+	// Auto-migrate models
+	config.DB.AutoMigrate(
+		&models.CartItem{},
+		&models.PaymentMethod{},
+		&models.Product{},
+		&models.ShoppingCart{},
+		&models.User{},
+		&models.Wishlist{},
+		&models.WishlistItem{},
+	)
+
 	router.GET("/ping", func(c *gin.Context) {
 		fmt.Println("Pong")
 	})
