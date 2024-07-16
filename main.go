@@ -2,6 +2,7 @@ package main
 
 import (
 	"ecommerce-backend/config"
+	"ecommerce-backend/handlers"
 	"ecommerce-backend/models"
 	"fmt"
 
@@ -29,20 +30,20 @@ func main() {
 	
 	// Auto-migrate models
 	config.DB.AutoMigrate(
-		&models.CartItem{},
-		&models.PaymentMethod{},
-		&models.Product{},
-		&models.ShoppingCart{},
 		&models.User{},
-		&models.Wishlist{},
-		&models.WishlistItem{},
+        &models.ShoppingCart{},
+        &models.CartItem{},
+        &models.PaymentMethod{},
+        &models.Product{},
+        &models.Wishlist{},
+        &models.WishlistItem{},
 	)
 
 	router.GET("/ping", func(c *gin.Context) {
 		fmt.Println("Pong")
 	})
 
-	router.POST("/signup", )
+	router.POST("/signup", handlers.Signup)
 
 	 // Run the Gin server
 	 router.Run(":8080")
