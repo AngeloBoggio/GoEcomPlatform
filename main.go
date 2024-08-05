@@ -44,7 +44,9 @@ func main() {
 	})
 
 	router.POST("/signup", handlers.Signup)
+	router.POST("/login", handlers.Login)
 
+	
 	 // Run the Gin server
 	 router.Run(":8080")
 }
